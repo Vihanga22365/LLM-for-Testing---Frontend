@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <form class="form-signin" [formGroup]="userLoginForm" (ngSubmit)="submitLoginForm()">
+    <h1 class="form-signin-heading-main">Copilot Research</h1>
+    <h2 class="form-signin-heading">SignIn</h2>
+    <mat-form-field class="example-full-width" style="margin-top: 2%">
+      <mat-label>Username</mat-label>
+      <input type="text" id="userName" matInput [formControl]="usernameFormControl" placeholder="Please enter your username" />
+      <mat-error *ngIf="usernameFormControl.hasError('required')"> Username is <strong>required</strong> </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" style="margin-top: 2%">
+      <mat-label>Password</mat-label>
+      <input type="password" id="password" matInput [formControl]="passwordFormControl" placeholder="Please enter your password" />
+      <mat-error *ngIf="passwordFormControl.hasError('required')"> Password is <strong>required</strong> </mat-error>
+    </mat-form-field>
+    <div class="example-button-row" style="margin-top: 2%">
+      <button type="submit" id="loginBtn" mat-raised-button color="primary">Login</button>
+    </div>
+  </form>
+</div>

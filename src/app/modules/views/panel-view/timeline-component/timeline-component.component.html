@@ -1,0 +1,149 @@
+<mat-card-content>
+  <div class="wrapper">
+    <form class="form-signin" [formGroup]="timelineForm" (ngSubmit)="submitTimelineForm()">
+      <h2 class="form-signin-heading">Timeline</h2>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Meeting ID</mat-label>
+              <input type="text" id="meetingId" matInput [formControl]="meetingIdFormControl" placeholder="Please enter your Meeting ID" />
+              <mat-error *ngIf="meetingIdFormControl.hasError('required')"> Meeting ID is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Banker ID</mat-label>
+              <input type="text" id="bankerId" matInput [formControl]="bankerIdFormControl" placeholder="Please enter your Banker ID" />
+              <mat-error *ngIf="bankerIdFormControl.hasError('required')"> Banker ID is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Customer ID</mat-label>
+              <input type="text" id="customerId" matInput [formControl]="customerIdFormControl" placeholder="Please enter your Customer ID" />
+              <mat-error *ngIf="customerIdFormControl.hasError('required')"> Customer ID is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Banker First Name</mat-label>
+              <input type="text" id="bankerFirstName" matInput [formControl]="bankerFirstNameFormControl" placeholder="Please enter your Banker First Name" />
+              <mat-error *ngIf="bankerFirstNameFormControl.hasError('required')"> Banker First Name is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Banker Last Name</mat-label>
+              <input type="text" id="bankerLastName" matInput [formControl]="bankerLastNameFormControl" placeholder="Please enter your Banker Last Name" />
+              <mat-error *ngIf="bankerLastNameFormControl.hasError('required')"> Username is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Customer First Name</mat-label>
+              <input
+                type="text"
+                id="customerFirstName"
+                matInput
+                [formControl]="customerFirstNameFormControl"
+                placeholder="Please enter your Customer First Name"
+              />
+              <mat-error *ngIf="customerFirstNameFormControl.hasError('required')"> Customer First Name is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <mat-form-field class="example-full-width" style="margin-top: 2%; width: 100%">
+              <mat-label>Customer Last Name</mat-label>
+              <input
+                type="text"
+                id="customerLastName"
+                matInput
+                [formControl]="customerLastNameFormControl"
+                placeholder="Please enter your Customer Last Name"
+              />
+              <mat-error *ngIf="customerLastNameFormControl.hasError('required')"> Customer Last Name is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <!-- <select name="hostType" id="hostType" [formControl]="hostTypeFormControl">
+              <option value=""></option>
+              <option *ngFor="let host of hostType" [value]="host.name">{{ host.name }}</option>
+            </select> -->
+            <mat-form-field style="margin-top: 2%; width: 100%">
+              <mat-label>Host Type</mat-label>
+              <mat-select id="hostType" [formControl]="hostTypeFormControl" required>
+                <mat-option *ngFor="let host of hostType" [value]="host.name">
+                  {{ host.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hostTypeFormControl.hasError('required')">Please choose Host Type</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <!-- <input type="date" name="meetingDate" id="meetingDate" [formControl]="meetingDateFormControl" /> -->
+            <mat-form-field class="example-form-field" style="margin-top: 2%; width: 100%">
+              <mat-label>Choose a Meeting Date</mat-label>
+              <input matInput [matDatepicker]="datepicker" [formControl]="meetingDateFormControl" id="meetingDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+              <mat-error *ngIf="meetingDateFormControl.hasError('required')"> Meeting Date is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <!-- <input type="time" name="startTime" id="startTime" [formControl]="startTimeFormControl" /> -->
+            <mat-form-field class="example-form-field" style="margin-top: 2%; width: 100%">
+              <mat-label>Choose a Meeting Start Time</mat-label>
+              <input
+                matInput
+                [formControl]="startTimeFormControl"
+                aria-label="default time"
+                [ngxTimepicker]="defaultStartValue"
+                [value]="'12:00 am'"
+                [format]="24"
+                id="startTime"
+                readonly
+              />
+              <ngx-material-timepicker #defaultStartValue></ngx-material-timepicker>
+
+              <mat-datepicker-toggle matIconSuffix>
+                <mat-icon matDatepickerToggleIcon>access_time</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-error *ngIf="startTimeFormControl.hasError('required')"> Meeting Start Time is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3">
+            <!-- <input type="time" name="endTime" id="endTime" [formControl]="endTimeFormControl" /> -->
+            <mat-form-field class="example-form-field" style="margin-top: 2%; width: 100%">
+              <mat-label>Choose a Meeting End Time</mat-label>
+              <input
+                matInput
+                [formControl]="endTimeFormControl"
+                aria-label="default time"
+                [format]="24"
+                [ngxTimepicker]="defaultEndValue"
+                [value]="'12:00 am'"
+                id="endTime"
+                readonly
+              />
+              <mat-datepicker-toggle matIconSuffix>
+                <mat-icon matDatepickerToggleIcon>access_alarms</mat-icon>
+              </mat-datepicker-toggle>
+              <ngx-material-timepicker #defaultEndValue></ngx-material-timepicker>
+              <mat-error *ngIf="endTimeFormControl.hasError('required')"> Meeting End Time is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="example-button-row" style="margin-top: 2%">
+          <button type="submit" id="timelineSubmitBtn" mat-raised-button color="primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-card-content>

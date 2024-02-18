@@ -1,0 +1,30 @@
+<app-header-bar-component [sidenav]="sidenav"></app-header-bar-component>
+
+<mat-sidenav-container [hasBackdrop]="false">
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8" src="https://pnghq.com/wp-content/uploads/pnghq.com-user-icon-cutout-png-clipart-images.png" />
+
+    <h4 class="name">{{ userName }}</h4>
+    <p class="designation">{{ userType }}</p>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLinkActive="active" routerLink="/panel/dashboard">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </button>
+    <button mat-button class="menu-button" routerLinkActive="active" routerLink="/panel/timeline">
+      <mat-icon>call</mat-icon>
+      <span>Timeline</span>
+    </button>
+    <button mat-button class="menu-button" routerLinkActive="active" routerLink="/panel/calendar">
+      <mat-icon>calendar_today</mat-icon>
+      <span>Calendar</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
